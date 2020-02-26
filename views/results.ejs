@@ -1,5 +1,34 @@
+<style>
+    h1,
+    a {
+        display: block;
+        text-align: center;
+    }
+</style>
 <h1>Results</h1>
+<a href="/">Search Again!</a>
+<br>
+<br>
+<table border="1" style="margin:  auto;">
+    <tr>
+        <td>Title</td>
+        <td>Year</td>
+        <td>IMDB ID</td>
+        <td>Type</td>
+        <td>Poster</td>
+    </tr>
+    <% results["Search"].forEach((result) => { %>
+    <tr>
+        <td><%= result.Title %></td>
+        <td><%= result.Year %></td>
+        <td><%= result.imdbID %></td>
+        <td><%= result.Type %></td>
+        <td><% if(result.Poster == 'N/A'){ %>
+            <p>Not available</p>
+            <% } else { %>
+            <img src="<%= result.Poster %>" alt="<%= result.Title%>">
+            <% } %></td>
+    </tr>
 
-<% results["Search"].forEach((result) => { %>
-    <li><%= result["Title"] %></li>
-<% }) %>
+    <% }) %>
+</table>
