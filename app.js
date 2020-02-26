@@ -5,9 +5,14 @@ var app = express();
 
 app.set("view engine", "ejs");
 
+app.get('/', (req, res) => {
+    res.render("search");
+});
 app.get("/result", (req, res) => {
+    var searchTerm = req.query.search;
+    var url = 'http://www.omdbapi.com/?s=' + searchTerm + '&apikey=thewdb';
   request(
-    "http://www.omdbapi.com/?s=guardians+of+the+galaxy&apikey=thewdb",
+    url,
     (error, response, body) => {
       if (!error && response.statusCode === 200) {
         var results = JSON.parse(body);
