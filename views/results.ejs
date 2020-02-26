@@ -1,9 +1,11 @@
 <style>
     h1,
-    a {
+    a,
+    h3 {
         display: block;
         text-align: center;
     }
+
     table {
         border-collapse: collapse;
     }
@@ -20,6 +22,9 @@
         <th>Type</th>
         <th>Poster</th>
     </tr>
+    <% if(results.Response == "False") { %>
+    <h3><%= results.Error %> </h3>
+    <% } else { %>
     <% results["Search"].forEach((result) => { %>
     <tr>
         <td><%= result.Title %></td>
@@ -33,5 +38,5 @@
             <% } %></td>
     </tr>
 
-    <% }) %>
+    <% }) } %>
 </table>
