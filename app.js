@@ -18,6 +18,10 @@ app.get("/result", (req, res) => {
     }
   });
 });
+
+app.get('*', (req, res) => {
+  res.render("404");
+})
 app.listen(3000, function() {
   console.log("App has been started on port 3000!");
 });
